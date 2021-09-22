@@ -19,7 +19,6 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.mygdx.game.spinwheel.SpinWheel;
-
 import java.security.SecureRandom;
 
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
@@ -32,7 +31,7 @@ public class SpinWheelAnim extends ScreenAdapter {
     private static final String CHALLENGE_STRING = "Drueck SPIN, um das Drehrad zu starten!";
     private static final String SPIN_WHEEL_ATLAS_PATH = "spinWheelScreen/spin_wheel_ui.atlas";
 
-    SpinWheel game;
+
 
     /**
      * Game constants
@@ -75,38 +74,6 @@ public class SpinWheelAnim extends ScreenAdapter {
     private boolean isIconOff;
     private boolean isMusicOn;
 
-
-
-
-    /**
-     * Test constructor
-     * Set all variables on null to enable testing
-     *
-     * @param str - will always be empty.
-     */
-    public SpinWheelAnim(String str) {
-        game = new SpinWheel();
-        camera = null;
-        batch = null;
-        stage = null;
-        skin = null;
-        atlas = null;
-        spinWheelTable = null;
-        challengeLabel = null;
-        descriptionLabel = null;
-        gameButton = null;
-        wheelImage = null;
-        needleImage = null;
-        spinButtonImage = null;
-        randomNumb = null;
-        timer = null;
-        color = null;
-        spinSound = null;
-        musicOn = null;
-        musicOff = null;
-        musicIcon = null;
-    }
-
     /**
      * Class constructor
      * init variables, load skin, load images from assets
@@ -116,7 +83,7 @@ public class SpinWheelAnim extends ScreenAdapter {
     public SpinWheelAnim() {
         camera = SpinWheel.getGameCamera();
         batch = new SpriteBatch();
-        stage = new Stage(new FitViewport(game.WIDTH, game.HEIGHT));
+        stage = new Stage(new FitViewport(SpinWheel.WIDTH, SpinWheel.HEIGHT));
         Gdx.input.setInputProcessor(stage);
 
         skin = new Skin(Gdx.files.internal("spinWheelScreen/uiskin.json"));
@@ -133,9 +100,9 @@ public class SpinWheelAnim extends ScreenAdapter {
         setupTextLabel(descriptionLabel, 3);
 
         atlas = new TextureAtlas(SPIN_WHEEL_ATLAS_PATH);
-        wheelImage = setupSpinWheelImages("spin_wheel_image", game.WIDTH / 4.9f, game.HEIGHT / 2.5f);
-        needleImage = setupSpinWheelImages("needle", (game.WIDTH / 2.07f), (game.HEIGHT / 1.53f));
-        spinButtonImage = setupSpinWheelImages("spin", (game.WIDTH / 2.31f), (game.HEIGHT / 1.95f));
+        wheelImage = setupSpinWheelImages("spin_wheel_image", SpinWheel.WIDTH / 4.9f, SpinWheel.HEIGHT / 2.5f);
+        needleImage = setupSpinWheelImages("needle", (SpinWheel.WIDTH / 2.07f), (SpinWheel.HEIGHT / 1.53f));
+        spinButtonImage = setupSpinWheelImages("spin", (SpinWheel.WIDTH / 2.31f), (SpinWheel.HEIGHT / 1.95f));
 
         stage.addActor(wheelImage);
         stage.addActor(needleImage);
@@ -154,7 +121,7 @@ public class SpinWheelAnim extends ScreenAdapter {
         musicIcon = new Image(musicOn);
         musicIcon.setHeight(100f);
         musicIcon.setWidth(100f);
-        musicIcon.setPosition(game.WIDTH-musicIcon.getImageWidth()-145f,game.HEIGHT-musicIcon.getImageHeight()-145f);
+        musicIcon.setPosition(SpinWheel.WIDTH-musicIcon.getImageWidth()-145f,SpinWheel.HEIGHT-musicIcon.getImageHeight()-145f);
 
         isIconOff = false;
         isMusicOn = true;
@@ -391,9 +358,5 @@ public class SpinWheelAnim extends ScreenAdapter {
         batch.dispose();
         skin.dispose();
         stage.dispose();
-    }
-
-    public Color getColor() {
-        return color;
     }
 }

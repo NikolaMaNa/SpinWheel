@@ -2,7 +2,6 @@ package com.mygdx.game.spinwheel;
 
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -10,10 +9,8 @@ import com.mygdx.game.spinwheel.screen.SpinWheelAnim;
 
 public class SpinWheel extends Game {
 
-	public static final int HEIGHT = 2220;
-	public static final int WIDTH = 1080;
-
-	private static SpinWheel spinWheelGame;
+	public static final float HEIGHT = 2220;
+	public static final float WIDTH = 1080;
 	private SpriteBatch batch;
 
 	private BitmapFont font;
@@ -34,14 +31,6 @@ public class SpinWheel extends Game {
 		return camera;
 	}
 
-
-	public BitmapFont getFont() {
-		return font;
-	}
-
-	public SpriteBatch getBatch() {
-		return batch;
-	}
 
 	@Override
 	public void dispose() {
